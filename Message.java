@@ -1,10 +1,11 @@
 /**
  * Message
  */
-public class Message implements ReliableSocket {
+ public class Message implements ReliableSocket {
 
         int InetAddress;
         int Message;
+        String byte[];
         
         public Message(int inetAddress, int message) {
             InetAddress = inetAddress;
@@ -26,6 +27,5 @@ public class Message implements ReliableSocket {
         public String toString() {
             return "Message [InetAddress=" + InetAddress + ", Message=" + Message + "]";
         }
-        byte[];
     
 }
