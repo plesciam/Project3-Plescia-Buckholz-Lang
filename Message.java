@@ -1,35 +1,75 @@
+import java.net.Inet4Address;
+import java.net.InetAddress;
+
 /**
  * Message
  */
  public class Message {
-    public static void main(String[] args) {
-            int InetAddress;
-            int getInetAddress() {
-            public void setInetAddress(String inetAddress) {
-                String InetAddress = inetAddress;   
+
+        private int inetAddress;
+        private int Message;
+        public Message(int inetAddress, int message) 
+        {
+            {
+             int InetAddress = inetAddress;
+            }
+            //public getMessage() {
+                Message = message;
+            }
+
+            public int setMessage(int message) {
+                this.message = message;
+                return message;
+            }
+
+            public int getInetAddress() {
+                InetAddress = inetAddress
+                
+                
             }
             
-            int Message;
-            private int message;
-            public Message(String inetAddress) {
-                Message = message;
-            }   
-            public Message(String inetAddress, String message) {
-                String InetAddress = inetAddress;
-                Message = message;
+            public void setInetAddress(int inetAddress) {
+                this.inetAddress = inetAddress;
+                return inetAddress;
             }
-            public String getMessage() {
-            return Message;
-            }
-            public void setMessage(String message) {
-            Message = message;
-            }
-             
-            byte[];
-            }
-    }
+        
+      }
+ 
     
- }  
+    
+    
+    
+    // {
+    //         {
+                
+    //             int setInetAddress(String inetAddress) 
+    //             int InetAddress;
+    //             int getInetAddress() 
+    //             String inetAddress;
+    //             String InetAddress = inetAddress;  
+                
+               
+                
+    //         }     
+            //
+    //         public Message(String inetAddress, String message) 
+            
+    //         private String Message;
+    //             Message = message; 
+    //         public String getMessage() {}
+            
+    //         return Message;
+    //         }
+    //         public void setMessage(String message) 
+    //         {
+    //         Message = message;
+    //         }
+          
+    //         int byte[];
+    //         }
+        
+    
+
 
         
         
@@ -40,10 +80,10 @@
                  
              
         
-//         public Message(int inetAddress, int message) {
-//             InetAddress = inetAddress;
-//             Message = message;
-//         }
+        // public Message(int inetAddress, int message) {
+        //     InetAddress = inetAddress;
+        //     Message = message;
+        // }
 //         public int getInetAddress() {
 //             return InetAddress;
 //         }
