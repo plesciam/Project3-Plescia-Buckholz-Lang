@@ -1,31 +1,14 @@
-import java.lang.annotation.Annotation;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.util.List;
-import java.util.Set;
-
-import javax.lang.model.element.AnnotationMirror;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.ElementVisitor;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.Name;
-import javax.lang.model.element.PackageElement;
-import javax.lang.model.type.TypeMirror;
-
 /**
  * Message
  */
- public class Message implements PackageElement
+ public class Message 
 {
         private int Message;
         private int InetAddress;
-        private int inetAddress;
         private byte[];
-
-        
+  
             {
-             int InetAddress = inetAddress;
+             int InetAddress = setInetAddress(0);
             }
             public void getMessage() 
             {
@@ -47,83 +30,10 @@ import javax.lang.model.type.TypeMirror;
                 this.InetAddress = inetAddress;
                 return inetAddress;
             }
-
-            @Override
-            public ElementKind getKind() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getKind'");
-            }
-
-            @Override
-            public Set<Modifier> getModifiers() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getModifiers'");
-            }
-
-            @Override
-            public List<? extends AnnotationMirror> getAnnotationMirrors() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getAnnotationMirrors'");
-            }
-
-            @Override
-            public <A extends Annotation> A getAnnotation(Class<A> annotationType) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getAnnotation'");
-            }
-
-            @Override
-            public <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationType) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getAnnotationsByType'");
-            }
-
-            @Override
-            public <R, P> R accept(ElementVisitor<R, P> v, P p) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'accept'");
-            }
-
-            @Override
-            public TypeMirror asType() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'asType'");
-            }
-
-            @Override
-            public Name getQualifiedName() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getQualifiedName'");
-            }
-
-            @Override
-            public Name getSimpleName() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getSimpleName'");
-            }
-
-            @Override
-            public List<? extends Element> getEnclosedElements() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getEnclosedElements'");
-            }
-
-            @Override
-            public boolean isUnnamed() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'isUnnamed'");
-            }
-
-            @Override
-            public Element getEnclosingElement() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'getEnclosingElement'");
-            }
     }
-  
-    // {
-    //         {
-                
+
+        
+      
     //             int setInetAddress(String inetAddress) 
     //             int InetAddress;
     //             int getInetAddress() 
