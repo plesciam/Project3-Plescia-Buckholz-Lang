@@ -1,4 +1,3 @@
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.util.Arrays;
 
@@ -59,6 +58,6 @@ import java.util.Arrays;
             @Override
             public String toString() 
             {
-                return addr + ":" + message + port "send" + dataLen + "bytes";
+                return addr + ":" + message + port + "send" + dataLen + "bytes";
             }
         }
