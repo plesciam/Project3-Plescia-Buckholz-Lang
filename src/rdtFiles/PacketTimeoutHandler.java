@@ -1,3 +1,5 @@
+package rdtFiles;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -39,7 +41,7 @@ import java.util.TimerTask;
         
             try 
             {
-                this.resendTimer.schedule(new PacketTimeoutHandler(Packet, Socket, resendTimer), 1000);
+                this.resendTimer.schedule(new PacketTimeoutHandler(Socket, Packet, resendTimer), 1000);
                 Socket.send(Packet);
             }
             catch(IllegalStateException ex)
