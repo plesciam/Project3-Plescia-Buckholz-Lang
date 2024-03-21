@@ -20,7 +20,7 @@ import java.util.TimerTask;
         this.resendTimer = resendTimer;
     }  
     
-    TimerTask task = new TimerTask() {
+    TimerTask task = new TimerTask() { //Creates a new timer, cancels the old and calls PacketTimeoutHandler once more
         @Override
         public void run() {
             Timer newTimer = resendTimer;
@@ -40,6 +40,7 @@ import java.util.TimerTask;
             try 
             {
                 this.resendTimer.schedule(task,1000);
+                Socket.send(Packet);
             }
             catch(IllegalStateException ex)
             {
