@@ -142,7 +142,7 @@ public class ReliableSocket {
 
     private String messageKey(Message message){
         //Construct a unique key using message properties
-        return message.getDestinationAddress().getHostAddress() + ":" + message.getDestinationPort();
+        return message.getAddr().getHostAddress() + ":" + message.getPort();
     }
 
     //Inner class representing a task to handle message timeout
