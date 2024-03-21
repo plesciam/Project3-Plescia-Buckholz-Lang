@@ -20,6 +20,16 @@ import java.util.TimerTask;
         this.resendTimer = resendTimer;
     }  
     
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            Timer newTimer = resendTimer;
+            resendTimer.cancel();
+            PacketTimeoutHandler pT = new PacketTimeoutHandler(Socket, Packet, newTimer);
+        }
+        
+    };
+
     @Override
     public void run() 
     {
@@ -29,7 +39,7 @@ import java.util.TimerTask;
         
             try 
             {
-                this.resendTimer.schedule(new PacketTimeoutHandler(Socket, Packet, resendTimer),1000);
+                this.resendTimer.schedule(task,1000);
             }
             catch(IllegalStateException ex)
             {

@@ -87,7 +87,7 @@ public class ReliableSocket {
     }
 
     //Method to handle timeout
-    private void handleTimeout(){
+    private void handleTimeout(Message currentMessage){
         switch (senderState){
             case WAIT_FOR_ACK:
             //Retransmit message and stay in WAIT_FOR_ACK state
@@ -107,7 +107,7 @@ public class ReliableSocket {
         try{
             //Serialize the message and construct a DatagramPcket
             byte[] data = serializeMessage(message);
-            DatagramPacket packet = new DatagramPacket(data, data.length, messgae.getDestinationAddress(), message,getDestinationPort());
+            DatagramPacket packet = new DatagramPacket(data, data.length, message.getAddr(), message.getPort());
             socket.send(packet);
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,7 +118,7 @@ public class ReliableSocket {
     //Method to start timer for messgae
     private void startTimer(Message message){
         //Create a timer for this message and schedule timeout task
-        Timer timer = new Timer()'
+        Timer timer = new Timer();
         timers.put(messageKey(message), timer);
         timer.schedule(new TimeoutTask(message), TIMEOUT);
     }
@@ -155,7 +155,7 @@ public class ReliableSocket {
 
         @Override
         public void run(){
-            handleTimout(message);
+            handleTimeout(message);
         }
     }
 
