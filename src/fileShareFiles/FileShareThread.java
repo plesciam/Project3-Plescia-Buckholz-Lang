@@ -1,4 +1,4 @@
-package fileshare;
+package fileShareFiles;
 
 import java.io.IOException;
 import model.Configuration;

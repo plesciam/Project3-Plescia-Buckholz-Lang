@@ -1,11 +1,11 @@
-package fileshare;
+package fileShareFiles;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.Host;
+//import model.Host;
 
-public class DownloadThread implements Runnable
+public class DownloadThread<Host> implements Runnable
 {
     private Host host;                      // The host to download from.
     private ArrayList<Integer> chunks;      // The list of chunks to donwload.
