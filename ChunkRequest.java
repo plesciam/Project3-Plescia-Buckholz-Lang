@@ -1,6 +1,9 @@
-import com.google.gson.Gson;
+import merrimackutil.json.JSONSerializable;
+import merrimackutil.json.types.JSONObject;
+import merrimackutil.json.types.JSONType;
 
-public class ChunkRequest implements JSONSerialiazable {
+
+public class ChunkRequest implements JSONSerializable {
     private String fileName;
     private int chunkId;
 
@@ -14,13 +17,15 @@ public class ChunkRequest implements JSONSerialiazable {
     }
 
     public int getChunkid(){
-        return ChunkId;
+        return chunkId;
     }
 
     @Override
-    public String toJSON(){
-        Gson gson = new Gson();
-        return gson.toJSON(this);
+    public JSONType toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("file-name", fileName);
+        jsonObject.put("chunk-id", chunkId);
+        return jsonObject.toString();
     }
-    
+
 }
