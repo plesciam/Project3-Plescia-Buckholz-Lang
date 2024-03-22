@@ -1,8 +1,8 @@
 package fileShareFiles;
 
 import java.io.IOException;
-import model.Configuration;
-import rdt.ReliableSocket;
+import modelFiles.Configuration;
+import rdtFiles.ReliableSocket;
 
 public class FileShareThread implements Runnable
 {

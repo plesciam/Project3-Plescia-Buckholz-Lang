@@ -3,9 +3,11 @@ package fileShareFiles;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//import model.Host;
+import modelFiles.Host;
 
-public class DownloadThread<Host> implements Runnable
+
+
+public class DownloadThread implements Runnable
 {
     private Host host;                      // The host to download from.
     private ArrayList<Integer> chunks;      // The list of chunks to donwload.
@@ -28,7 +30,18 @@ public class DownloadThread<Host> implements Runnable
     {
         return data;
     }
-
+    public ArrayList<Integer> getResult() 
+    {
+        return chunks;
+    }
+    public Host getRes() 
+    {
+        return host;
+    }
+    public String getR() 
+    {
+        return fileName;
+    }
     /**
      * Download the requested chunks from the given host.
      */
