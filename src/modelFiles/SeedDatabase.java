@@ -15,7 +15,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package model;
+package modelFiles;
 
 import java.io.FileNotFoundException;
 import java.io.InvalidObjectException;

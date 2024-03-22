@@ -1,4 +1,4 @@
-package model;
+package modelFiles;
 /*
  * Copyright (C) 2022 -- 2023 Zachary A. Kissel
  *
