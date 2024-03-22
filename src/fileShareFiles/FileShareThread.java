@@ -1,8 +1,12 @@
 package fileShareFiles;
 
 import java.io.IOException;
-import model.Configuration;
-import rdt.ReliableSocket;
+import java.net.SocketException;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import modelFiles.Configuration;
+import rdtFiles.ReliableSocket;
 
 public class FileShareThread implements Runnable
 {
@@ -11,6 +15,7 @@ public class FileShareThread implements Runnable
 
     private Configuration config;       // The configuration.
     private ReliableSocket sock;        // The reliable sock to talk over.
+    private BlockingQueue<ReliableSocket> sockQueue;
    
     /**
      * Construct a new file sharing thread.
@@ -22,6 +27,7 @@ public class FileShareThread implements Runnable
         this.config = config;
         this.sock = new ReliableSocket(config.getServePort());
         this.sock.setFailProbability(config.getFailureProb());
+        this.sockQueue = new LinkedBlockingQueue<>();
     }
 
     /**
@@ -31,8 +37,31 @@ public class FileShareThread implements Runnable
     @Override
     public void run() 
     {
-       // TODO: Implement the run method.
+        //Connect to the network and listen for incoming connections
+        try{
+            ReliableSocket serverSocket = new ReliableServerSocket(config.getLocalPort());
+            System.out.println("FileShareThread: Listening for incoming connections...");
+
+            while(true){
+                ReliableSocket sock = serverSocket.accept();
+                System.out.println("FileShareThread: Connection established with " + sock.getRemoteSocketAddress());
+                sockQueue.add(sock);
+
+                //Spawn a new thread to handle the incoming connection
+                Thread handlerThread = new Thread(new FileShareHandler(sock));
+                handlerThread.start();
+            }
+        } catch (SocketException e){
+            System.out.println("FileShareThread: Socket closed, exiting...");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
+
+    public ReliableSocket getNextSocket() throws InterruptedException{
+        return sockQueue.take();
+    }
+
 
   
     
