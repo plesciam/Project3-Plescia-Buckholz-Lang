@@ -23,8 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import fileshare.DownloadThread;
-import fileshare.FileShareThread;
+import fileShareFiles.*;
 import merrimackutil.cli.LongOption;
 import merrimackutil.cli.OptionParser;
 import merrimackutil.json.JsonIO;
