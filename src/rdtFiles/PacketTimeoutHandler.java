@@ -6,7 +6,6 @@ import java.net.DatagramSocket;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 /**
  * PacketTimeoutHandler
  */
@@ -28,7 +27,7 @@ import java.util.TimerTask;
         public void run() {
             Timer newTimer = new Timer();
             resendTimer.cancel();
-            PacketTimeoutHandler pT = new PacketTimeoutHandler(Socket, Packet, newTimer);
+            new PacketTimeoutHandler(Socket, Packet, newTimer);
         }
         
     };
@@ -42,7 +41,7 @@ import java.util.TimerTask;
         
             try 
             {
-               // this.resendTimer.schedule(new PacketTimeoutHandler(Socket, Packet, resendTimer), 1000);
+                PacketTimeoutHandler.schedule(new PacketTimeoutHandler(Socket, Packet, resendTimer), 1000);
                 Socket.send(Packet);
             }
             catch(IllegalStateException ex)
@@ -56,6 +55,10 @@ import java.util.TimerTask;
             System.out.println("Timer has failed to send for packet" + Packet.getAddress() + Packet.getPort());
             e.printStackTrace();
         }
+    }
+
+    private static void schedule(PacketTimeoutHandler packetTimeoutHandler, int i) {
+        throw new UnsupportedOperationException("Unimplemented method 'schedule'");
     }
   
 }

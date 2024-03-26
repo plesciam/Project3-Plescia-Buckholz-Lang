@@ -148,7 +148,7 @@ public class ReliableSocket {
     }
 
     //Inner class representing a task to handle message timeout
-    private class TimoutTask extends TimerTask{
+    private class TimeoutTask extends TimerTask{
         private Message message;
 
         public void TimeoutTask(Message message){
@@ -206,7 +206,7 @@ public class ReliableSocket {
         private TimerTask task;
         private long timeout;
 
-        public Timer(TimerTask task, long timeout){
+        public Timer(){
             this.task = task;
             this.timeout = timeout;
         }
