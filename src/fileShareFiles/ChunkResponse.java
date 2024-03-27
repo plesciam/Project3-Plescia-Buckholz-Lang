@@ -1,10 +1,10 @@
+package fileShareFiles;
 import java.io.InvalidObjectException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import merrimackutil.json.JSONSerializable;
 import merrimackutil.json.types.JSONObject;
 import merrimackutil.json.types.JSONType;
-import fileShareFiles.*;
 
 public class ChunkResponse implements JSONSerializable{
     private String fileName;
@@ -21,7 +21,7 @@ public class ChunkResponse implements JSONSerializable{
         return fileName;
     }
 
-    public int getChunkid(){
+    public int getChunkID(){
         return chunkId;
     }
 
