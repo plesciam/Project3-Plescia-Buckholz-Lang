@@ -167,26 +167,27 @@ public class Driver
     public static void doCLI() throws InterruptedException, IOException
     {
         String command;
-        Scanner scan = new Scanner(System.in);
-        boolean done = false;
+        try (Scanner scan = new Scanner(System.in)) {
+            boolean done = false;
 
-        while (!done)
-        {
-            // Read a command.
-            do 
-            {   
-                System.out.print("> ");
-                command = scan.nextLine();
-            } while (command.equals(""));
-
-            // If the user enters .quit, we should stop the CLI and 
-            // close the application.
-            if (command.equalsIgnoreCase(".quit"))
-                done = true;
-            else 
+            while (!done)
             {
-                // Get the file from the peers.
-                getFile(command);
+                // Read a command.
+                do 
+                {   
+                    System.out.print("> ");
+                    command = scan.nextLine();
+                } while (command.equals(""));
+
+                // If the user enters .quit, we should stop the CLI and 
+                // close the application.
+                if (command.equalsIgnoreCase(".quit"))
+                    done = true;
+                else 
+                {
+                    // Get the file from the peers.
+                    getFile(command);
+                }
             }
         }
     }
