@@ -155,6 +155,10 @@ public class ReliableSocket {
     private class TimeoutTask extends TimerTask{
         private Message message;
 
+        public TimeoutTask(Message message2) {
+            //TODO Auto-generated constructor stub
+        }
+
         public void TimoutTask(Message message){
             this.message = message;
         }
@@ -230,5 +234,6 @@ public class ReliableSocket {
         throw new UnsupportedOperationException("Unimplemented method 'setFailProbability'");
     }
 
-   
+  
+
 }
