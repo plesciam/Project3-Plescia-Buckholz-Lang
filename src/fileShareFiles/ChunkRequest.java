@@ -8,6 +8,7 @@ import merrimackutil.json.types.JSONType;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+
 public class ChunkRequest implements JSONSerializable {
     private String fileName;
     private int chunkId;
@@ -32,12 +33,12 @@ public class ChunkRequest implements JSONSerializable {
         return jsonObject;
     }
 
-    @Override
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("file-name", fileName);
         jsonObject.put("chunk-id", chunkId);
         return jsonObject.toString();
+       
     }
     @Override
     public byte[] serialize(){
@@ -57,6 +58,7 @@ public class ChunkRequest implements JSONSerializable {
             e.printStackTrace(); // or log the exception
             return null;
         }
+        
     }
 
     @Override

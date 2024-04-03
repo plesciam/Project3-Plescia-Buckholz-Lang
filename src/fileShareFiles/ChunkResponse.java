@@ -6,6 +6,7 @@ import merrimackutil.json.JSONSerializable;
 import merrimackutil.json.types.JSONObject;
 import merrimackutil.json.types.JSONType;
 
+
 public class ChunkResponse implements JSONSerializable{
     private String fileName;
     private int chunkId;
@@ -37,7 +38,6 @@ public class ChunkResponse implements JSONSerializable{
         return jsonObject;
     }
 
-    @Override
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("file-name", fileName);
