@@ -2,6 +2,7 @@ package fileShareFiles;
 
 import java.io.IOException;
 import modelFiles.Configuration;
+import rdtFiles.Message;
 import rdtFiles.ReliableSocket;
 import fileShareFiles.*;
 import java.io.FileInputStream;
@@ -60,7 +61,7 @@ public class FileShareThread implements Runnable
     private void sendChunkResponse(ChunkRequest c) throws IOException
     {
         String filePath = c.getFileName(); //Receives the file name
-        try (FileInputStream fStream = new FileInputStream(filePath)) {
+        try (FileInputStream fStream = new FileInputStream(config.getFileDirectory() + filePath)) {
             long start = c.getChunkid();
             fStream.skip(start); //Skips to the starting point of the chunk
             byte[] chunk = new byte[50]; //Sets the size of our chunk
@@ -68,7 +69,7 @@ public class FileShareThread implements Runnable
             String chunkEncoded = Base64.getEncoder().encodeToString(chunk); //Encodes chunk
             ChunkResponse cRes = new ChunkResponse(filePath, c.getChunkid(), chunkEncoded);
             //New chunk response created above
-            sock.send(cRes); //Need to implement return method
+            
         }
     }
 

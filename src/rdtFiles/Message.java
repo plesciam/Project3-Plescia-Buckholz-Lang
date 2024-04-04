@@ -14,22 +14,13 @@ import java.util.Arrays;
     private byte[] data;
     private int dataLen;      
 
-    public Message(InetAddress addr, Message message, int port, byte[] data, int dataLen) 
+    public Message(InetAddress addr,int port, byte[] data, int dataLen) 
         {
             this.addr = addr;
-            this.message = message;
             this.port = port;
             this.data = data;    
             this.dataLen = dataLen;
         }
-            public void getMessage() 
-            {
-                setMessage(0);
-            }
-
-            public int setMessage(int message) {
-                return message;
-            }
 
             public void getInetAddress() 
             {

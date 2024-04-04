@@ -239,11 +239,6 @@ public class ReliableSocket {
         
     }
 
-    public void send(ChunkResponse cRes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'send'");
-    }
-
   
 
 }
