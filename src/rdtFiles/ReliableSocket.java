@@ -234,9 +234,9 @@ public class ReliableSocket {
         throw new UnsupportedOperationException("Unimplemented method 'setFailProbability'");
     }
 
-    public ChunkRequest receiveChunk() {
+    public void requestChunk() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'receiveChunk'");
+        
     }
 
     public void send(ChunkResponse cRes) {

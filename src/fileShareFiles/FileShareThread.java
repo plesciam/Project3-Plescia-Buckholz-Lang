@@ -46,7 +46,6 @@ public class FileShareThread implements Runnable
     @Override
     public void run() 
     {
-       // TODO: Implement the run method.
        try {
         while (true)
         {

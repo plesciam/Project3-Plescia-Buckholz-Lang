@@ -1,5 +1,6 @@
 package fileShareFiles;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,6 +50,25 @@ public class DownloadThread implements Runnable
     public void run() 
     {
         // TODO: Implement the run method
+        try {
+            for (int i = 0; i < this.chunks.size(); i++)
+            {
+                byte[] chunk = downloadChunk(i, host); //Downloads chunk and stores in array
+                data.put(i*50, chunk); //Adds to data the chunk received
+
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private byte[] downloadChunk(int chunkID, Host h) throws IOException
+    {
+        chunkID *= 50;
+        ChunkRequest c = new ChunkRequest(fileName, chunkID); //Creates new chunk request
+        
     }
     
 }
