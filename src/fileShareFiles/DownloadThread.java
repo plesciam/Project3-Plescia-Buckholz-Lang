@@ -56,7 +56,9 @@ public class DownloadThread implements Runnable
             for (int i = 0; i < this.chunks.size(); i++)
             {
                 constructRequest(i, host); //Sends request to host for chunks
-                
+                //receive chunk...
+                byte[] chunkData; //= packet.getPacketData()
+                data.put(i * 50, chunkData);
             }
         }
         catch (IOException e)

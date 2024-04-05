@@ -50,7 +50,7 @@ public class FileShareThread implements Runnable
        try {
         while (true)
         {
-            ChunkRequest c = sock.receiveChunk(); //Need to implement chunk receiving
+            ChunkRequest c; //= sock.receiveChunk(); Need to implement chunk receiving
             sendChunkResponse(c);
         }
        } catch(IOException e){
@@ -69,7 +69,7 @@ public class FileShareThread implements Runnable
             String chunkEncoded = Base64.getEncoder().encodeToString(chunk); //Encodes chunk
             ChunkResponse cRes = new ChunkResponse(filePath, c.getChunkid(), chunkEncoded);
             //New chunk response created above
-            
+            //Chunk needs to be placed into message
         }
     }
 
