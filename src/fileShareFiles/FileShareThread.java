@@ -53,26 +53,6 @@ public class FileShareThread implements Runnable
     @Override
     public void run() 
     {
-<<<<<<< HEAD
-        //Connect to the network and listen for incoming connections
-        try{
-            ReliableSocket serverSocket = new ReliableServerSocket(config.getLocalPort());
-            System.out.println("FileShareThread: Listening for incoming connections...");
-
-            while(true){
-                ReliableSocket sock = serverSocket.accept();
-                System.out.println("FileShareThread: Connection established with " + sock.getRemoteSocketAddress());
-                sockQueue.add(sock);
-
-                //Spawn a new thread to handle the incoming connection
-                Thread handlerThread = new Thread(new FileShareHandler(sock));
-                handlerThread.start();
-            }
-        } catch (SocketException e){
-            System.out.println("FileShareThread: Socket closed, exiting...");
-        } catch (IOException e){
-            e.printStackTrace();
-=======
        try {
         while (true)
         {
@@ -96,9 +76,28 @@ public class FileShareThread implements Runnable
             ChunkResponse cRes = new ChunkResponse(filePath, c.getChunkid(), chunkEncoded);
             //New chunk response created above
             //Chunk needs to be placed into message
->>>>>>> 235d3b1292497ef8a3488ac0b621863a9095ad95
         }
     }
+}     //Connect to the network and listen for incoming connections
+        try{
+            ReliableSocket serverSocket = new ReliableServerSocket(config.getLocalPort());
+            System.out.println("FileShareThread: Listening for incoming connections...");
+
+            while(true){
+                ReliableSocket sock = serverSocket.accept();
+                System.out.println("FileShareThread: Connection established with " + sock.getRemoteSocketAddress());
+                sockQueue.add(sock);
+
+                //Spawn a new thread to handle the incoming connection
+                Thread handlerThread = new Thread(new FileShareHandler(sock));
+                handlerThread.start();
+            }
+        } catch (SocketException e){
+            System.out.println("FileShareThread: Socket closed, exiting...");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    
 
     public ReliableSocket getNextSocket() throws InterruptedException{
         return sockQueue.take();
