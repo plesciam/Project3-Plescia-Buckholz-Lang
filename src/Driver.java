@@ -30,10 +30,10 @@ import merrimackutil.cli.OptionParser;
 import merrimackutil.json.JsonIO;
 import merrimackutil.json.types.JSONObject;
 import merrimackutil.util.Tuple;
-import model.Configuration;
-import model.Host;
-import model.Seed;
-import model.SeedDatabase;
+import modelFiles.Configuration;
+import modelFiles.Host;
+import modelFiles.Seed;
+import modelFiles.SeedDatabase;
 
 
 /**

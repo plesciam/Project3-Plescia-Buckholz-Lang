@@ -220,4 +220,9 @@ public class ReliableSocket {
             task.cancel();
         }
     }
+
+    public void setFailProbability(double failureProb) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setFailProbability'");
+    }
 }

@@ -6,6 +6,7 @@ import java.net.DatagramSocket;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 /**
  * PacketTimeoutHandler
  */
@@ -41,8 +42,8 @@ import java.util.TimerTask;
         
             try 
             {
-                //this.resendTimer.schedule(new PacketTimeoutHandler(Socket, Packet, resendTimer), 1000);
-                 Socket.send(Packet);
+               // this.resendTimer.schedule(new PacketTimeoutHandler(Socket, Packet, resendTimer), 1000);
+                Socket.send(Packet);
             }
             catch(IllegalStateException ex)
             {
