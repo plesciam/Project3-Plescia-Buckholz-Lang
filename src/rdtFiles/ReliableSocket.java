@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import fileShareFiles.ChunkRequest;
+import fileShareFiles.ChunkResponse;
+
+
 public class ReliableSocket {
     private DatagramSocket socket;
     private HashMap<String, ConnectionState> senderStates;
@@ -53,11 +57,11 @@ public class ReliableSocket {
     }
 
     //Method to receive a message
-    public void send(Message message) {
+    public void send(Message cRes) {
         switch (senderState){
             case WAIT_FOR_CALL:
-            sendPacket(message);
-            currentMessage = message;
+            sendPacket(cRes);
+            currentMessage = cRes;
             senderState = SenderState.WAIT_FOR_ACK;
             break;
             case WAIT_FOR_ACK:
@@ -148,10 +152,14 @@ public class ReliableSocket {
     }
 
     //Inner class representing a task to handle message timeout
-    private class TimoutTask extends TimerTask{
+    private class TimeoutTask extends TimerTask{
         private Message message;
 
-        public void TimeoutTask(Message message){
+        public TimeoutTask(Message message2) {
+            //TODO Auto-generated constructor stub
+        }
+
+        public void TimoutTask(Message message){
             this.message = message;
         }
 
@@ -206,12 +214,12 @@ public class ReliableSocket {
         private TimerTask task;
         private long timeout;
 
-        public Timer(TimerTask task, long timeout){
+        public Timer(){
             this.task = task;
             this.timeout = timeout;
         }
 
-        public void schedule(){
+        public void schedule(TimeoutTask timeoutTask, int tIMEOUT2){
             java.util.Timer timer = new java.util.Timer();
             timer.schedule(task, timeout);
         }
@@ -225,4 +233,12 @@ public class ReliableSocket {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setFailProbability'");
     }
+
+    public void requestChunk() {
+        // TODO Auto-generated method stub
+        
+    }
+
+  
+
 }

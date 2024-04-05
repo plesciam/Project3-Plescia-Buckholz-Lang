@@ -6,7 +6,11 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import modelFiles.Configuration;
+import rdtFiles.Message;
 import rdtFiles.ReliableSocket;
+import fileShareFiles.*;
+import java.io.FileInputStream;
+import java.util.Base64;
 
 public class FileShareThread implements Runnable
 {
@@ -49,6 +53,7 @@ public class FileShareThread implements Runnable
     @Override
     public void run() 
     {
+<<<<<<< HEAD
         //Connect to the network and listen for incoming connections
         try{
             ReliableSocket serverSocket = new ReliableServerSocket(config.getLocalPort());
@@ -67,6 +72,31 @@ public class FileShareThread implements Runnable
             System.out.println("FileShareThread: Socket closed, exiting...");
         } catch (IOException e){
             e.printStackTrace();
+=======
+       try {
+        while (true)
+        {
+            ChunkRequest c; //= sock.receiveChunk(); Need to implement chunk receiving
+            sendChunkResponse(c);
+        }
+       } catch(IOException e){
+        e.printStackTrace(); //Records the error captured
+       }
+    }
+
+    private void sendChunkResponse(ChunkRequest c) throws IOException
+    {
+        String filePath = c.getFileName(); //Receives the file name
+        try (FileInputStream fStream = new FileInputStream(config.getFileDirectory() + filePath)) {
+            long start = c.getChunkid();
+            fStream.skip(start); //Skips to the starting point of the chunk
+            byte[] chunk = new byte[50]; //Sets the size of our chunk
+            fStream.read(chunk); //Reads info into array chunk
+            String chunkEncoded = Base64.getEncoder().encodeToString(chunk); //Encodes chunk
+            ChunkResponse cRes = new ChunkResponse(filePath, c.getChunkid(), chunkEncoded);
+            //New chunk response created above
+            //Chunk needs to be placed into message
+>>>>>>> 235d3b1292497ef8a3488ac0b621863a9095ad95
         }
     }
 
