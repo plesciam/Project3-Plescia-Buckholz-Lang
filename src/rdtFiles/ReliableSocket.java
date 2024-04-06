@@ -16,6 +16,7 @@ public class ReliableSocket {
     private HashMap<String, ConnectionState> receiverStates;
     private HashMap<String, Timer> timers;
     private final int TIMEOUT = 1000; // Timeout value in milliseconds
+    private double failProb = 0.0;
     private enum SenderState {
         WAIT_FOR_CALL, WAIT_FOR_ACK, RETRANSMISSION_WAIT_FOR_ACK
     }
@@ -246,8 +247,11 @@ public class ReliableSocket {
         return m;
     }
 
-    public void setFailProbability(double fProb)
+    public void setFailProbability(double failProb) throws IllegalArgumentException 
     {
-        
+        if (failProb < 0.0 || failProb > 1.0)
+            throw new IllegalArgumentException("Invalid failure probability.");
+        this.failProb = failProb;
     }
+
 }

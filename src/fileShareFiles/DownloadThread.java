@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 
 import modelFiles.Host;
@@ -65,8 +66,9 @@ public class DownloadThread implements Runnable
                 InetAddress newAdd = InetAddress.getByName(getRes().getAddress());
                 setSocket(newAdd);
                 constructRequest(i, host); //Sends request to host for chunks
-                Message m = sock.receive();
-                byte[] chunkData = m.getData();
+                Message m = sock.receive(); //Receives message
+                byte[] chunkData = m.getData(); //Collects data
+                chunkData = Base64.getDecoder().decode(chunkData); //Decodes data from encoder
                 data.put(i * 50, chunkData);
             }
         }

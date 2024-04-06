@@ -1,7 +1,9 @@
 package rdtFiles;
 
+import java.nio.channels.DatagramChannel;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
+import java.net.DatagramPacket;
 
 public class ReliablePacket {
     public static final int HEADER_SIZE = 9;
@@ -35,6 +37,7 @@ public class ReliablePacket {
         packetData = new byte[HEADER_SIZE + payload.length];
         System.arraycopy(header, 0, packetData, 0, HEADER_SIZE);
         System.arraycopy(payload, 0, packetData, HEADER_SIZE, payload.length);
+
     }
 
     public byte[] getPacketData() {

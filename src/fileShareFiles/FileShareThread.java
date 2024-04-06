@@ -9,6 +9,8 @@ import modelFiles.Configuration;
 import rdtFiles.Message;
 import rdtFiles.ReliableSocket;
 import fileShareFiles.*;
+import merrimackutil.json.types.JSONObject;
+
 import java.io.FileInputStream;
 import java.util.Base64;
 
@@ -57,8 +59,9 @@ public class FileShareThread implements Runnable
         while (true)
         {
             Message m = sock.receive();
-            
-            sendChunkResponse(c);
+            byte[] data = m.getData();
+            //Needs to parse through the data received, turn it back into a ChunkRequest
+            //and then put it through ChunkResponse
         }
        } catch(IOException e){
         e.printStackTrace(); //Records the error captured

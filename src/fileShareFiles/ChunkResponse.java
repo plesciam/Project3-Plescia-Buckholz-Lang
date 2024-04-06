@@ -53,9 +53,9 @@ public class ChunkResponse implements JSONSerializable{
         }
 
         JSONObject jsonObject = (JSONObject) arg0;
-        fileName = jsonObject.getString("file-name");
-        chunkId = jsonObject.getInt("chunk-id");
-        chunkData = jsonObject.getString("chunk-data");
+        this.fileName = jsonObject.getString("file-name");
+        this.chunkId = jsonObject.getInt("chunk-id");
+        this.chunkData = jsonObject.getString("chunk-data");
     }
 
     @Override

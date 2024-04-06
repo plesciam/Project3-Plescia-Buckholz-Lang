@@ -65,6 +65,10 @@ public class ChunkRequest implements JSONSerializable {
     public void deserialize(JSONType arg0) throws InvalidObjectException {
         if(!(arg0 instanceof JSONObject))
         throw new InvalidObjectException("Invalid JSONType for deserialization");
+
+        JSONObject jsonObject = (JSONObject) arg0;
+        this.fileName = jsonObject.getString("file-name");
+        this.chunkId = jsonObject.getInt("chunk-id");
     }
         
 
