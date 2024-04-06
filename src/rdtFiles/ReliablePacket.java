@@ -4,8 +4,8 @@ import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
 public class ReliablePacket {
-    private static final int HEADER_SIZE = 9;
-    private static final int MAX_PAYLOAD_SIZE = 500;
+    public static final int HEADER_SIZE = 9;
+    public static final int MAX_PAYLOAD_SIZE = 500;
 
     private byte [] packetData;
 

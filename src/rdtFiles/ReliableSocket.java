@@ -229,16 +229,25 @@ public class ReliableSocket {
         }
     }
 
-    public void setFailProbability(double failureProb) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setFailProbability'");
+    public Message receive() 
+    {
+        DatagramPacket pkt = new DatagramPacket(new byte[ReliablePacket.MAX_PAYLOAD_SIZE + ReliablePacket.MAX_PAYLOAD_SIZE], 
+            ReliablePacket.MAX_PAYLOAD_SIZE + ReliablePacket.HEADER_SIZE);
+        try
+        {
+            socket.receive(pkt);
+        } 
+        catch (IOException e) 
+        {
+            if (e instanceof SocketTimeoutException)
+                return null;
+        }
+        Message m = new Message(socket.getInetAddress(), socket.getPort(), pkt.getData(), pkt.getData().length);
+        return m;
     }
 
-    public void requestChunk() {
-        // TODO Auto-generated method stub
+    public void setFailProbability(double fProb)
+    {
         
     }
-
-  
-
 }
