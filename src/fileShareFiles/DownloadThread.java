@@ -3,6 +3,7 @@ package fileShareFiles;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
@@ -61,14 +62,16 @@ public class DownloadThread implements Runnable
     public void run() 
     {
         try {
+            InetAddress newAdd = InetAddress.getByName(getRes().getAddress());
+            setSocket(newAdd); //Sets the currently connected socket to the required address
             for (int i = 0; i < this.chunks.size(); i++)
             {
-                InetAddress newAdd = InetAddress.getByName(getRes().getAddress());
-                setSocket(newAdd);
                 constructRequest(i, host); //Sends request to host for chunks
                 Message m = sock.receive(); //Receives message
                 byte[] chunkData = m.getData(); //Collects data
                 chunkData = Base64.getDecoder().decode(chunkData); //Decodes data from encoder
+                String cDataString = new String(chunkData, StandardCharsets.UTF_8); //Puts data into 
+                // a string to be turned into a JSON object.
                 data.put(i * 50, chunkData);
             }
         }

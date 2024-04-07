@@ -2,6 +2,7 @@ package fileShareFiles;
 
 import java.io.IOException;
 import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -58,10 +59,11 @@ public class FileShareThread implements Runnable
        try {
         while (true)
         {
-            Message m = sock.receive();
-            byte[] data = m.getData();
-            //Needs to parse through the data received, turn it back into a ChunkRequest
-            //and then put it through ChunkResponse
+            Message m = sock.receive(); //Receives message
+            byte[] data = m.getData(); //Data is extracted from the message
+            String stringData = new String(data, StandardCharsets.UTF_8);
+            ChunkRequest c = new ChunkRequest("f", 50); //Placeholder
+            sendChunkResponse(c);
         }
        } catch(IOException e){
         e.printStackTrace(); //Records the error captured
@@ -78,8 +80,13 @@ public class FileShareThread implements Runnable
             fStream.read(chunk); //Reads info into array chunk
             String chunkEncoded = Base64.getEncoder().encodeToString(chunk); //Encodes chunk
             ChunkResponse cRes = new ChunkResponse(filePath, c.getChunkid(), chunkEncoded);
-            //New chunk response created above
-            //Chunk needs to be placed into message
+            //New chunk reponse created above
+            byte[] sendingChunk = cRes.serialize();
+            /*
+            Should make a message w/ the recipient's InetAddress, port, the sendingChunk data,
+            and the length of sendingChunk
+            sock.send(message);
+            */
         }
     }
-}     //Connect to the network and listen for incoming connections
+}   
